@@ -1,23 +1,33 @@
-v = int(input("Digite aqui o número de vértices: "))
-a = int(input("Digite aqui o número de arestas: "))
-matriz = [[0 for i in range(v)] for j in range(v)]
+n = int(input("Número de vértices: "))
+m_adj = [[0 for i in range(n)] for j in range(n)]
+for i in range(n):
+    m_adj[i] = [int(m) for m in input().split(' ')]
+dicio = {}
+for i,j in enumerate(m_adj):
+    r = []
+    for l in range(len(j)):
+        if j[l] != 0:
+            r.append(l)
+        dicio[i] = r
+print(dicio)
 
-for i in range(a):
-    v1, v2 = input("Insira as arestas: ").split(" ")
-    v1 = int(v1)
-    v2 = int(v2)
-    matriz[v1][v2] = 1
+def pintar_cores(d):
+    global c
+    c = {}
+    adjacentes = sorted(list(d.keys()), key=lambda x: len(d[x]), reverse=True)
+    for i in adjacentes:
+        cores_possiveis = [True] * len(adjacentes)
+        for j in d[i]:
+            if j in c:
+                color = c[j]
+                cores_possiveis[color] = False
+        for color, possiveis in enumerate(cores_possiveis):
+            if possiveis:
+                c[i] = color
+    return c
+print(pintar_cores(dicio))
 
-for i in range(v):
-    print(matriz[i])
-
-lista_graus = []
-for i in range(v):
-    print()
-    adj = 0
-    for j in range(v):
-        if matriz[i][j] == 1: adj = adj + 1
-    lista_graus.append(adj)
-    print("Província {} possui {} vizinhos".format(i+1, adj))
-lista_graus.sort(reverse=True)
-print(lista_graus)
+lista_de_cores = []
+for i in c.values():
+    lista_de_cores.append(i)
+print(len(set(lista_de_cores)))

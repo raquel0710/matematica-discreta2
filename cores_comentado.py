@@ -18,7 +18,7 @@ def pintar_cores(d): #Algoritmo Welsh Powell
     for i in adjacentes: #cria-se uma lista com a quantidade de vérticessendo que preenchida por True
         cores_possiveis = [True] * len(adjacentes)
         for j in d[i]: #o programa irá percorrer cada vértice e analisar quem são adjacentes de quem, e distribuir as demais cores
-            if j in c: #adicionando cor ao vértice e após pintá-lo, muda True por False
+            if j in c:
                 color = c[j]
                 cores_possiveis[color] = False
         for color, possiveis in enumerate(cores_possiveis):

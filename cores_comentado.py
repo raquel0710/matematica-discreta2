@@ -14,7 +14,7 @@ print(dicio)
 def pintar_cores(d): #Algoritmo Welsh Powell
     global c
     c = {} #dicionário que associa vértices à suas respectivas cores
-    adjacentes = sorted(list(d.keys()), key=lambda x: len(d[x]), reverse=True) #número de vizinhos
+    adjacentes = sorted(list(d.keys()), key=lambda x: len(d[x]), reverse=True) #aqueles que possuem mais vizinhos em ordem decrescente
     for i in adjacentes: #cria-se uma lista com a quantidade de vérticessendo que preenchida por True
         cores_possiveis = [True] * len(adjacentes)
         for j in d[i]: #o programa irá percorrer cada vértice e analisar quem são adjacentes de quem, e distribuir as demais cores

@@ -2,7 +2,7 @@ N, origem, destino = map(lambda i: int(i), input().split()) #adicionando o núme
 L = [[] for i in range(N)] #criando listas de acordo com a quantidade de cidades(vértices)
 for i in range(N - 1):
     P, Q, D = map(lambda i: int(i), input().split()) #adicionando demais cidades e seu custo
-    L[P - 1].append((Q - 1, D)) #De P para Q e Q para Q há um mesmo Custo
+    L[P - 1].append((Q - 1, D))
     L[Q - 1].append((P - 1, D))
 
 origem -= 1

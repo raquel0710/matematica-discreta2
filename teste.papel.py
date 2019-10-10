@@ -1,8 +1,25 @@
+#Alturas = [(h, indice)]
+alturas = []
+L = []
 N = int(input())
-lista = []
-lista = [() for m in range(N)]
 for i in range(N):
     h = int(input())
-    lista.append(h)
-print(h) #não estou conseguindo adicionar h a cada tupla
-print(lista)
+    alturas.append((h,i+1))
+    L.append(h)
+print(alturas)
+print(L)
+
+
+alturas.sort(key = lambda x: x[0])
+print(alturas)
+
+#MARCADOR
+flag = [0,N,0]
+for n in range(1, N+1):
+verificados = [False] * N
+
+
+#CORTAR PEDAÇOS
+for i in L:
+    pedaços =+ 1
+    if [i-1] > i

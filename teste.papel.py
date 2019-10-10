@@ -9,17 +9,15 @@ for i in range(N):
 print(alturas)
 print(L)
 
-
 alturas.sort(key = lambda x: x[0])
-print(alturas)
 
 #MARCADOR
-flag = [0,N,0]
-for n in range(1, N+1):
-verificados = [False] * N
+#flag = [0,N,0]
+#for n in range(1, N+1):
+#verificados = [False] * N
 
 
 #CORTAR PEDAÇOS
-for i in L:
-    pedaços =+ 1
-    if [i-1] > i
+pedaços = 1
+for i in range(L):
+    if 

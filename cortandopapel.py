@@ -9,8 +9,7 @@ marcador = [1 for i in range(N+2)] #marcador associando os retângulos percorrid
 marcador[0]= 0                      #e os não percorridos à 1
 marcador[N+1]=0                     #marcados tipo [0,N,0]
 
-RGlobal = 2 #número mínimo de corte
-RLocal = 2
+RGlobal, RLocal = 2 #número mínimo de corte
 for i in lista: #percorrendo a lista
      alturas, index=i #alturas, índices iguais à i, ou seja vou percorrer as tuplas
      RGlobal = max(RGlobal, RLocal) #o valor global sempre vai ser o maior entre o global e o local

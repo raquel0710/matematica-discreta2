@@ -1,4 +1,3 @@
-import sys
 
 def dfs( i, pai ):
     global res
@@ -22,7 +21,6 @@ for i in range(1,N):
 
 res = N
 
-sys.setrecursionlimit(10**5)
 
 dfs( 1, -1 )
 

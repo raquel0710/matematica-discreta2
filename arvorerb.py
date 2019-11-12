@@ -1,5 +1,19 @@
-BLACK = 0
-RED = 1
+PRETO = 0
+VERMELHO = 1
+
+def main():
+    rbtree = ARVORE()
+    rbtree.insert(7)
+    rbtree.insert(6)
+    rbtree.insert(5)
+    rbtree.insert(4)
+    rbtree.insert(3)
+    rbtree.insert(2)
+    rbtree.insert(1)
+    rbtree.tranverse()
+    if __name__ == '__main__':
+        main()
+
 
 class nodos(object):
 	def __init__(self, cor, dados, left=None, right=None, pai=None):
@@ -30,22 +44,20 @@ class ARVORE(object):
 				raiz.right.pai = raiz	
 			return raiz
 
-		nodo = nodos(RED, dados)
+		nodo = nodos(VERMELHO, dados)
 		self.raiz = Arvore_Binaria(self.raiz, nodo)
 		self.ajustamentos(self.raiz, nodo)# not working
 
 	def deletar(self, dados):
 		pass
 
-	#check params
-	# if pass by value doesnt work return the new parent
 	def Rotacao_Esquerda(self, raiz, nodo):
 		pass
 
 	def Rotacao_Direita(self, raiz, nodo):
 		pass
 
-	def level_order_traverse(self, l=[]):
+	def tranverse(self, l=[]):
 		if self.raiz == None:
 			return
 		else:
@@ -56,54 +68,46 @@ class ARVORE(object):
 				if current_node.left is not None : l.append(current_node.left)
 				if current_node.right is not None : l.append(current_node.right)
 
-
 	def ajustamentos(self, raiz, nodo):
 		def trocar(first, second):
 			current = first
 			first = second
 			second = current
-		while nodo is not raiz and nodo.cor is not BLACK and nodo.pai.cor is RED:
+
+		while nodo is not raiz and nodo.cor is not PRETO and nodo.pai.cor is VERMELHO:
 			pai = nodo.pai
 			avo = nodo.pai.pai
-			# Case A - parent is left child of grandparent
 			if pai is avo.left:
 				tio = avo.right
-				# Case 1 - Uncle is red
-				if tio is not None and tio.cor is RED:
-					tio.cor = BLACK
-					pai.cor = BLACK
-					avo.cor = RED
+				if tio is not None and tio.cor is VERMELHO:
+					tio.cor = PRETO
+					pai.cor = PRETO
+					avo.cor = VERMELHO
 					nodo = avo
 				else:
-					# Case 2 - X is the right child of the parent
 					if nodo is pai.right:
 						self.Rotacao_Esquerda(raiz, pai)
 						nodo = pai
 						pai = nodo.pai
 
-					# Case 3 - X is the left child of the parent
 					self.Rotacao_Direita(raiz, avo)
 					trocar(pai.color, avo.cor)
 					nodo = pai
 
-			# Case B - parent is right child of grandparent
 			else:
-				tio = avo.lef
-				# Case 1 - Uncle is red
-				if tio is not None and tio.cor is RED:
-					tio.cor = BLACK
-					pai.cor = BLACK
-					avo.color = RED
+				tio = avo.left
+				if tio is not None and tio.cor is VERMELHO:
+					tio.cor = PRETO
+					pai.cor = PRETO
+					avo.color = VERMELHO
 					nodo = avo
 				else:
-					# Case 2 - X is the left child of the parent
 					if nodo is pai.left:
 						self.Rotacao_Direita(raiz, pai)
-						nooe = pai
+						nodo = pai
 						pai = nodo.pai
-					# Case 3 - X is the right child of the parent
 					self.Rotacao_Esquerda(raiz, avo)
 					trocar(pai.cor, avo.cor)
 					nodo = pai
 
-		raiz.cor = BLACK		
+		raiz.cor = PRETO
